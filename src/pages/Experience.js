@@ -18,7 +18,17 @@ export default function Experience() {
         <h2 className="section-title">Experience</h2>
             <div className="experience-item">
               <h3 className="experience-role">Undergraduate Researcher</h3>
-              <div className="experience-org-date">Columbia University | Sep 2024 – JUly 2025</div>
+              <div className="experience-org-date" style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+                <span>Columbia University | Sep 2024 – JUly 2025 |</span>
+                <a
+                  href="https://drive.google.com/file/d/1xfg6keeL-ITgJ_U7Ds6WgFDUQW2Zgx5o/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#0070f3", textDecoration: "underline", fontWeight: 500, fontSize: "0.98em" }}
+                >
+                  View Research Paper
+                </a>
+              </div>
               <ul className="experience-desc">
                 <li>Conducted astrophysics research analyzing multi-messenger signals from gravitational waves and neutrinos, contributing to cutting-edge scientific understanding.</li>
                 <li>Developed and optimized Python tools for large-scale data processing and statistical analysis, improving efficiency and accuracy of data workflows.</li>

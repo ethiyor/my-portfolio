@@ -28,14 +28,14 @@ export default function Home() {
             I thrive in environments where I can learn quickly, collaborate with diverse teams, and create solutions that have real-world impact. I am now seeking internship opportunities where I can contribute my technical skills, analytical mindset, and creative problem-solving to projects at the intersection of software engineering, AI, and scientific innovation.
           </p>
         </div>
-        <img src="/yorr.jpeg" alt="Yordanos Tiruneh Kassa" className="about-image" style={{
-          width: "160px",
-          height: "160px",
-          objectFit: "cover",
-          borderRadius: "50%",
-          boxShadow: "0 2px 8px rgb(0 0 0 / 0.12)",
-          marginTop: "8px"
-        }} />
+          <img src={process.env.PUBLIC_URL + "/images/yorr.jpeg"} alt="Yordanos Tiruneh Kassa" className="about-image" style={{
+            width: "160px",
+            height: "160px",
+            objectFit: "cover",
+            borderRadius: "50%",
+            boxShadow: "0 2px 8px rgb(0 0 0 / 0.12)",
+            marginTop: "8px"
+          }} />
       </section>
     </main>
   );
