@@ -94,68 +94,40 @@
   font-style: italic;
 }
 
-/* Projects grid and card styling */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
 .project-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 24px 20px 20px 20px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
   background-color: #fff;
-  transition: box-shadow 0.3s, transform 0.3s;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-height: 420px;
-  position: relative;
-  overflow: hidden;
+  transition: box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.13);
-  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.15);
 }
 
-.project-image {
-  width: 100%;
-  max-height: 160px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 16px;
-  box-shadow: 0 1px 4px rgb(0 0 0 / 0.07);
-}
-
-.project-description {
-  font-size: 16px;
+.project-card h3 {
+  margin-top: 0;
   margin-bottom: 10px;
-  color: #444;
-}
-
-.project-meta {
-  margin-bottom: 12px;
-  font-size: 15px;
-  color: #555;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.project-role {
-  font-weight: 500;
-}
-
-.project-challenges {
-  font-style: italic;
+  font-size: 22px;
   color: #0070f3;
 }
 
+.project-card p {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #444;
+}
+
 .tech-tags {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .tech-tag {
@@ -163,46 +135,21 @@
   background-color: #0070f3;
   color: #fff;
   border-radius: 20px;
-  padding: 5px 14px;
+  padding: 4px 12px;
   font-size: 14px;
   margin-right: 8px;
   margin-bottom: 6px;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.07);
 }
 
-.project-links {
-  margin-top: auto;
-}
-
-.project-link {
-  margin-right: 18px;
+.project-links a {
+  margin-right: 16px;
   text-decoration: none;
   color: #0070f3;
   font-weight: 600;
-  font-size: 15px;
-  transition: color 0.2s;
 }
 
-.project-link:hover {
+.project-links a:hover {
   text-decoration: underline;
-  color: #005bb5;
-}
-
-/* Fade-in animation for project cards */
-.fade-in {
-  opacity: 0;
-  animation: fadeInUp 0.8s forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .experience-item {
