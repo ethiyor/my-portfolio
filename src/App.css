@@ -1,38 +1,249 @@
-.App {
-  text-align: center;
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #222;
+  color: #fff;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-weight: 600;
+  z-index: 1000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Main content */
+.main-content {
+  padding-top: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Sections */
+.section {
+  margin: 80px auto 60px auto;
+}
+
+/* Titles */
+.title {
+  font-size: 36px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.paragraph {
+  font-size: 18px;
+}
+
+/* Section headings */
+.section-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Skills */
+.skill-item {
+  margin-bottom: 15px;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #444;
+}
+
+.skill-bar {
+  background: #eee;
+  border-radius: 8px;
+  height: 12px;
+  width: 100%;
+}
+
+.skill-level {
+  height: 100%;
+  background: #0070f3;
+  border-radius: 8px;
+}
+
+/* Placeholder sections */
+.placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Projects grid and card styling */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.project-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px 20px 20px 20px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
+  background-color: #fff;
+  transition: box-shadow 0.3s, transform 0.3s;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
+  min-height: 420px;
+  position: relative;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.project-card:hover {
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.13);
+  transform: translateY(-4px) scale(1.02);
 }
 
-@keyframes App-logo-spin {
+.project-image {
+  width: 100%;
+  max-height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.07);
+}
+
+.project-description {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.project-meta {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-role {
+  font-weight: 500;
+}
+
+.project-challenges {
+  font-style: italic;
+  color: #0070f3;
+}
+
+.tech-tags {
+  margin-bottom: 14px;
+}
+
+.tech-tag {
+  display: inline-block;
+  background-color: #0070f3;
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 14px;
+  margin-right: 8px;
+  margin-bottom: 6px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.07);
+}
+
+.project-links {
+  margin-top: auto;
+}
+
+.project-link {
+  margin-right: 18px;
+  text-decoration: none;
+  color: #0070f3;
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.2s;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+  color: #005bb5;
+}
+
+/* Fade-in animation for project cards */
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(30px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.experience-item {
+  margin-bottom: 30px;
+}
+
+.experience-role {
+  margin: 0 0 6px 0;
+  font-size: 20px;
+  color: #0070f3;
+}
+
+.experience-org-date {
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  color: #555;
+  font-size: 15px;
+}
+
+.experience-desc {
+  font-size: 16px;
+  color: #444;
+  margin: 0;
+}
+
+.contact-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 18px;
+}
+
+.contact-list li {
+  margin-bottom: 10px;
+}
+
+.contact-list a {
+  color: #0070f3;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact-list a:hover {
+  text-decoration: underline;
 }
