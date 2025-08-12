@@ -12,6 +12,11 @@ export default function Contact() {
     <main className="main-content">
       <section className="section">
         <h2 className="section-title">Contact</h2>
+        <img
+          src={process.env.PUBLIC_URL + "/images/nyc_times_square.jpg"}
+          alt="NYC Times Square"
+          style={{ width: "100%", maxWidth: 400, borderRadius: 12, marginBottom: 24 }}
+        />
         <p>Feel free to reach out to me via email or connect on LinkedIn or GitHub!</p>
         <ul className="contact-list">
           <li>
