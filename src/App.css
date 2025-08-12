@@ -141,6 +141,24 @@
 }
 
 @media (max-width: 600px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px 2px;
+    gap: 8px;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+  .nav-link {
+    font-size: 13px;
+    padding: 4px 6px;
+    border-radius: 8px;
+    min-width: 60px;
+    text-align: center;
+    flex: 1 1 0;
+    box-sizing: border-box;
+    margin: 0 2px;
+  }
   .skills-section {
     padding: 20px 10px;
   }
