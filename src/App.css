@@ -144,10 +144,12 @@
   .navbar {
     flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
     padding: 8px 2px;
     gap: 8px;
     width: 100vw;
     box-sizing: border-box;
+    row-gap: 6px;
   }
   .nav-link {
     font-size: 13px;
@@ -155,9 +157,11 @@
     border-radius: 8px;
     min-width: 60px;
     text-align: center;
-    flex: 1 1 0;
+    flex: 0 1 auto;
     box-sizing: border-box;
     margin: 0 2px;
+    display: inline-block;
+    white-space: nowrap;
   }
   .skills-section {
     padding: 20px 10px;
