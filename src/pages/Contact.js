@@ -9,7 +9,7 @@ const contactInfo = {
 
 export default function Contact() {
   return (
-    <div style={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}>
+    <div style={{ position: "relative", minHeight: "100vh", overflow: "hidden", paddingTop: "60px" }}>
       <img
         src={process.env.PUBLIC_URL + "/images/time_square.jpeg"}
         alt="NYC Times Square"

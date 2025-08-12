@@ -10,22 +10,25 @@ import "./App.css";
 export default function App() {
   return (
     <Router>
-      <nav className="navbar">
-        <Link className="nav-link" to="/">
-          Home
-        </Link>
-        <Link className="nav-link" to="/projects">
-          Projects
-        </Link>
+      <nav className="navbar" style={{ display: 'flex', alignItems: 'center', gap: '0', justifyContent: 'flex-start' }}>
+        <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="Portfolio Logo" className="portfolio-logo" />
+        <div style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: '30px' }}>
+          <Link className="nav-link" to="/">
+            Home
+          </Link>
+          <Link className="nav-link" to="/projects">
+            Projects
+          </Link>
           <Link className="nav-link" to="/experience">
-          Experience
-        </Link>
+            Experience
+          </Link>
           <Link className="nav-link" to="/skills">
-          Skills
-        </Link>
-        <Link className="nav-link" to="/contact">
-          Contact
-        </Link>
+            Skills
+          </Link>
+          <Link className="nav-link" to="/contact">
+            Contact
+          </Link>
+        </div>
       </nav>
 
       <Routes>
