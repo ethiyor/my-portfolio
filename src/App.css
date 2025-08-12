@@ -345,16 +345,16 @@
 
 .project-link {
   display: inline-block;
-  padding: 10px 26px;
-  border-radius: 26px;
+  padding: 6px 14px;
+  border-radius: 18px;
   background: linear-gradient(90deg, #0070f3 70%, #00c6fb 100%);
   color: #fff;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 13px;
   text-decoration: none;
-  box-shadow: 0 2px 10px rgba(0,112,243,0.16);
-  border: 2px solid #0070f3;
-  letter-spacing: 0.6px;
+  box-shadow: 0 2px 8px rgba(0,112,243,0.13);
+  border: 1.5px solid #0070f3;
+  letter-spacing: 0.5px;
   transition: background 0.3s, box-shadow 0.3s, border-color 0.3s;
   user-select: none;
 }

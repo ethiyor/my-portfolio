@@ -20,8 +20,8 @@ const projects = [
     challenges: "Developed REST APIs with FastAPI to handle PDF parsing, text chunking, and semantic search. Integrated Hugging Face transformers for summarization and question answering, optimizing inference speed for large documents.",
     tech: ["React", "FastAPI", "Supabase", "Hugging Face"],
     image: process.env.PUBLIC_URL + "/images/papermind.png",
-    demoLink: "https://papermind-demo.com",
-    repoLink: "https://github.com/yourusername/papermind",
+    demoLink: "https://papermind-ai-frontend.vercel.app/",
+    repoLink: "https://github.com/ethiyor/papermind-ai",
   },
   {
     name: "School Website",
