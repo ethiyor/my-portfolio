@@ -6,17 +6,14 @@ export default function Home() {
     <main className="main-content">
       <section className="section" style={{ display: "flex", alignItems: "flex-start", gap: "40px" }}>
         <div style={{ flex: 1 }}>
-          <h1 className="title">Yordanos Tiruneh Kassa</h1>
+          <h1 className="title">Yordanos Kassa</h1>
           <p className="subtitle">
-            Aspiring Software Engineer | Columbia Junior in Astrophysics |{' '}
-            <a
-              href="https://drive.google.com/file/d/1xfg6keeL-ITgJ_U7Ds6WgFDUQW2Zgx5o/view?usp=sharing"
+            Aspiring Software Engineer | Junior in Astrophysics | Undergraduate Researcher, Columbia 2027{' '}<a
+              href="https://urf.columbia.edu/urf/research/srf/scholars"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: '#0070f3', textDecoration: 'underline', fontWeight: 500 }}
-            >
-              Former Undergraduate Researcher
-            </a>
+            >Science Research Fellow</a>
           </p>
           <p className="paragraph">
             Hi! I’m Yordanos — a passionate developer and problem-solver dedicated to building meaningful web applications, advancing AI/ML solutions, and tackling complex challenges through technology. Currently pursuing my degree at Columbia University, I combine a strong foundation in computer science with a background in astrophysics research, where I applied data analysis and computational modeling to study galaxy dynamics.

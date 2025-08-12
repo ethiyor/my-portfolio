@@ -9,36 +9,33 @@ const contactInfo = {
 
 export default function Contact() {
   return (
-    <main className="main-content">
-      <section className="section">
+    <div style={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}>
+      <img
+        src={process.env.PUBLIC_URL + "/images/time_square.jpeg"}
+        alt="NYC Times Square"
+        className="contact-bg"
+      />
+      <div className="contact-overlay">
         <h2 className="section-title">Contact</h2>
-        <img
-          src={process.env.PUBLIC_URL + "/images/nyc_times_square.jpg"}
-          alt="NYC Times Square"
-          style={{ width: "100%", maxWidth: 400, borderRadius: 12, marginBottom: 24 }}
-        />
         <p>Feel free to reach out to me via email or connect on LinkedIn or GitHub!</p>
         <ul className="contact-list">
           <li>
-            Email:{" "}
             <a href={`mailto:${contactInfo.email}`} target="_blank" rel="noreferrer">
-              {contactInfo.email}
+              Email
             </a>
           </li>
           <li>
-            LinkedIn:{" "}
             <a href={contactInfo.linkedIn} target="_blank" rel="noreferrer">
-              https://www.linkedin.com/in/yordanos-kassa-624302295/
+              LinkedIn
             </a>
           </li>
           <li>
-            GitHub:{" "}
             <a href={contactInfo.github} target="_blank" rel="noreferrer">
-              github.com/ethiyor
+              GitHub
             </a>
           </li>
         </ul>
-      </section>
-    </main>
+      </div>
+    </div>
   );
 }
