@@ -60,35 +60,19 @@ export default function Projects() {
               <div
                 key={name}
                 className="project-card fade-in"
-                onClick={() =>
-                  setModalProject({
-                    name,
-                    tagline,
-                    overview,
-                    role,
-                    challenges,
-                    tech,
-                    image,
-                    demoLink,
-                    repoLink,
-                  })
-                }
+                onClick={() => {
+                  if (demoLink) {
+                    window.open(demoLink, '_blank', 'noopener,noreferrer');
+                  }
+                }}
                 tabIndex={0}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter")
-                    setModalProject({
-                      name,
-                      tagline,
-                      overview,
-                      role,
-                      challenges,
-                      tech,
-                      image,
-                      demoLink,
-                      repoLink,
-                    });
+                  if (e.key === "Enter" && demoLink) {
+                    window.open(demoLink, '_blank', 'noopener,noreferrer');
+                  }
                 }}
-                aria-label={`View details for project ${name}`}
+                aria-label={`Open live demo for project ${name}`}
+                style={{ cursor: demoLink ? 'pointer' : 'not-allowed', opacity: demoLink ? 1 : 0.7 }}
               >
                 {image && (
                   <img

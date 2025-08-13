@@ -11,7 +11,9 @@ export default function App() {
   return (
     <Router>
       <nav className="navbar" style={{ display: 'flex', alignItems: 'center', gap: '0', justifyContent: 'flex-start' }}>
-        <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="Portfolio Logo" className="portfolio-logo" />
+        <Link to="/" className="logo-link" style={{ display: 'flex', alignItems: 'center' }}>
+          <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="Portfolio Logo" className="portfolio-logo" />
+        </Link>
         <div style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: '30px' }}>
           <Link className="nav-link" to="/">
             Home

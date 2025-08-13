@@ -17,7 +17,7 @@ export default function Home() {
           }} />
           <h1 className="title" style={{ fontSize: "2rem", textAlign: "center", marginBottom: "10px" }}>Yordanos Kassa</h1>
           <p className="subtitle" style={{ textAlign: "center", fontSize: "1rem", wordBreak: "break-word", maxWidth: "520px", margin: "0 auto 10px auto", whiteSpace: "normal", lineHeight: "1.4" }}>
-            Aspiring Software Engineer | Junior in Astrophysics | Undergraduate Researcher, Columbia 2027{' '}<a
+            Aspiring Software Engineer | Astrophysics & CS-Math | Undergraduate Researcher, Columbia 2027{' '}<a
               href="https://urf.columbia.edu/urf/research/srf/scholars"
               target="_blank"
               rel="noopener noreferrer"
