@@ -17,21 +17,18 @@ export default function Home() {
           }} />
           <h1 className="title" style={{ fontSize: "2.8rem", textAlign: "center", marginBottom: "12px", fontWeight: 800, letterSpacing: "-1px", color: "#0070f3" }}>Yordanos Kassa</h1>
           <p className="subtitle" style={{ textAlign: "center", fontSize: "1.2rem", wordBreak: "break-word", maxWidth: "700px", margin: "0 auto 20px auto", whiteSpace: "normal", lineHeight: "1.6", color: "#333" }}>
-            <span style={{ fontWeight: 700, fontSize: "1.25rem" }}>Aspiring Software Engineer | Astrophysics & CS-Math | Undergraduate Researcher, Columbia 2027</span><br/>
-            <span style={{ color: '#0070f3', fontWeight: 600, fontSize: "1.1rem" }}>Science Research Fellow</span>
+            <span style={{ fontWeight: 700, fontSize: "1.25rem" }}>Software Engineer | Astrophysics Research Fellow | Columbia University '27</span><br/>
+            <span style={{ color: '#0070f3', fontWeight: 600, fontSize: "1.1rem" }}>Building the future through code and science</span>
           </p>
           <div style={{ maxWidth: "750px", margin: "0 auto", fontSize: "1.1rem", color: "#222" }}>
             <p className="paragraph" style={{ fontSize: "1.15rem", fontWeight: 600, marginBottom: "18px", textAlign: "center" }}>
-              Hi! I'm Yordanos — a passionate developer and problem-solver dedicated to building meaningful web applications, advancing AI/ML solutions, and tackling complex challenges through technology.
+              Bridging the gap between cutting-edge astrophysics research and modern software engineering
             </p>
             <p className="paragraph" style={{ marginBottom: "16px" }}>
-              Currently pursuing my degree at Columbia University, I combine a strong foundation in computer science with a background in astrophysics research, where I applied data analysis and computational modeling to study galaxy dynamics.
+              I'm a passionate software engineer and research fellow at Columbia University, where I combine my love for astrophysics with advanced computing to unlock the mysteries of the universe. My work spans from analyzing gravitational wave signals to building AI-powered web applications that solve real-world problems.
             </p>
             <p className="paragraph" style={{ marginBottom: "16px" }}>
-              My hands-on experience spans designing scalable backend systems, developing intuitive user interfaces, and integrating advanced AI models to enhance data-driven applications. I'm proficient in a variety of technologies including React, Node.js, FastAPI, Supabase, and Java, and have a solid understanding of cloud infrastructure and API design. These skills enable me to bridge the gap between complex algorithms and practical, user-friendly software solutions.
-            </p>
-            <p className="paragraph" style={{ marginBottom: "16px" }}>
-              I thrive in environments where I can learn quickly, collaborate with diverse teams, and create solutions that have real-world impact. I am now seeking internship opportunities where I can contribute my technical skills, analytical mindset, and creative problem-solving to projects at the intersection of software engineering, AI, and scientific innovation.
+              <strong>What drives me:</strong> The intersection of scientific discovery and technological innovation. Whether I'm processing terabyte-scale astronomical datasets or developing full-stack applications, I bring the same analytical rigor and creative problem-solving approach that makes breakthrough research possible.
             </p>
             
             <div style={{ 
@@ -42,10 +39,10 @@ export default function Home() {
               border: "1px solid #d0e8ff"
             }}>
               <h3 style={{ color: "#0070f3", marginBottom: "16px", fontSize: "1.2rem", textAlign: "center" }}>
-                Currently Working On
+                🚀 Currently Working On
               </h3>
               <ul style={{ margin: 0, paddingLeft: "20px", lineHeight: "1.7" }}>
-                <li><strong>Multi-messenger Astrophysics Research</strong> - Utilizing Python-based tools to analyze correlations between gravitational waves and neutrino signals</li>
+                <li><strong>Multi-messenger Astrophysics Research</strong> - Developing Python tools to analyze correlations between gravitational waves and neutrino signals</li>
                 <li><strong>AI-Powered Applications</strong> - Building intelligent document processing systems using modern NLP techniques</li>
                 <li><strong>Open Source Contributions</strong> - Contributing to scientific computing libraries and developer tools</li>
               </ul>
@@ -70,7 +67,7 @@ export default function Home() {
                     boxShadow: "0 4px 16px rgba(0,112,243,0.3)"
                   }}
                 >
-                  Get In Touch
+                  📧 Get In Touch
                 </a>
                 <a 
                   href="https://github.com/ethiyor" 
@@ -88,7 +85,7 @@ export default function Home() {
                     boxShadow: "0 4px 16px rgba(0,0,0,0.2)"
                   }}
                 >
-                  View GitHub
+                  💻 View GitHub
                 </a>
               </div>
             </div>

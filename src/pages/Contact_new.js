@@ -28,10 +28,10 @@ export default function Contact() {
           border: "1px solid #d0e8ff"
         }}>
           <h3 style={{ color: "#0070f3", marginBottom: "16px", fontSize: "1.1rem", textAlign: "center" }}>
-            What I'm Looking For
+            🎯 What I'm Looking For
           </h3>
           <ul style={{ margin: 0, paddingLeft: "20px", fontSize: "0.95rem", lineHeight: 1.6, color: "#555" }}>
-            <li>Software Engineering Internships (Summer 2026)</li>
+            <li>Software Engineering Internships (Summer 2025)</li>
             <li>Research Computing Opportunities</li>
             <li>Open Source Collaborations</li>
             <li>Technical Mentorship</li>
@@ -53,7 +53,8 @@ export default function Contact() {
               border: '1px solid #d0e8ff',
               transition: 'all 0.3s'
             }}>
-              Email: {contactInfo.email}
+              <span style={{ fontSize: '1.2rem' }}>✉️</span>
+              {contactInfo.email}
             </a>
           </li>
           <li style={{ marginBottom: '16px', textAlign: 'center' }}>
@@ -70,6 +71,7 @@ export default function Contact() {
               border: '1px solid #d0e8ff',
               transition: 'all 0.3s'
             }}>
+              <span style={{ fontSize: '1.2rem' }}>💼</span>
               LinkedIn Profile
             </a>
           </li>
@@ -87,6 +89,7 @@ export default function Contact() {
               border: '1px solid #d0e8ff',
               transition: 'all 0.3s'
             }}>
+              <span style={{ fontSize: '1.2rem' }}>💻</span>
               GitHub Profile
             </a>
           </li>
@@ -101,9 +104,9 @@ export default function Contact() {
           border: '1px solid rgba(0,112,243,0.2)'
         }}>
           <p style={{ margin: 0, fontSize: '0.9rem', color: '#0070f3', fontWeight: 600 }}>
-            Based in New York City<br/>
-            Columbia University Student<br/>
-            Available for Summer 2025 opportunities
+            📍 Based in New York City<br/>
+            🎓 Columbia University Student<br/>
+            ⚡ Available for Summer 2025 opportunities
           </p>
         </div>
       </div>

@@ -2,52 +2,57 @@ import React from "react";
 
 const skillGroups = [
   {
-    category: "Frontend",
+    category: "Programming Languages",
     skills: [
-      { name: "HTML & CSS", description: "Semantic markup, responsive layouts" },
-      { name: "JavaScript", description: "ES6+, DOM manipulation, async/await" },
-      { name: "React", description: "Hooks, context API, component design" },
-      { name: "Responsive UI Design", description: "Mobile-first and adaptive design" },
+      { name: "JavaScript (ES6+)", description: "Modern web development with async/await, DOM manipulation, and advanced language features." },
+      { name: "Java", description: "Object-oriented programming, data structures, algorithms, and enterprise applications." },
+      { name: "SQL", description: "Database design, complex queries, joins, and performance optimization." },
+      { name: "HTML5 & CSS3", description: "Semantic markup, modern styling, animations, and responsive design principles." },
     ],
   },
   {
-    category: "Backend",
+    category: "Frontend Development",
     skills: [
-      { name: "Java", description: "OOP, REST API development" },
-      { name: "Python", description: "Scripting, data parsing" },
-      { name: "Node.js", description: "Express.js, middleware, async" },
-      { name: "FastAPI", description: "Building REST APIs, async processing" },
-      { name: "Express.js", description: "Routing, middleware" },
+      { name: "React.js", description: "Component-driven architecture, hooks, context API, state management, and modern React patterns." },
+      { name: "Responsive Design", description: "Mobile-first approach, CSS Grid, Flexbox, and cross-browser compatibility." },
+      { name: "UI/UX Design", description: "User-centered design principles, accessibility (WCAG), and modern design systems." },
+      { name: "Version Control", description: "Git workflows, branching strategies, code reviews, and collaborative development." },
     ],
   },
   {
-    category: "AI / Data",
+    category: "Backend & Cloud",
     skills: [
-      { name: "Hugging Face Transformers", description: "NLP model integration" },
-      { name: "Semantic Search & Embeddings", description: "Vector search techniques" },
-      { name: "Data Parsing & Processing", description: "ETL pipelines, chunking" },
+      { name: "Node.js & Express", description: "RESTful APIs, middleware, authentication, and scalable server architecture." },
+      { name: "FastAPI", description: "High-performance Python APIs with automatic documentation and async support." },
+      { name: "Supabase", description: "Real-time databases, authentication, storage, and serverless functions." },
+      { name: "PostgreSQL", description: "Advanced SQL, database design, indexing, and query optimization." },
+      { name: "Cloud Deployment", description: "Heroku, Render, Vercel, and modern DevOps practices." },
     ],
   },
   {
-    category: "Databases & Cloud",
+    category: "AI & Data Science",
     skills: [
-      { name: "Supabase", description: "Realtime DB, auth, cloud storage" },
-      { name: "PostgreSQL", description: "Relational DB design, queries" },
+      { name: "Machine Learning", description: "Supervised/unsupervised learning, model evaluation, and feature engineering." },
+      { name: "Natural Language Processing", description: "Text processing, sentiment analysis, and transformer models." },
+      { name: "Hugging Face", description: "Pre-trained models, fine-tuning, and deployment of NLP solutions." },
+      { name: "Data Visualization", description: "Interactive charts, statistical plots, and dashboard creation." },
+      { name: "Scientific Computing", description: "Statistical analysis, numerical methods, and research data processing." },
     ],
   },
   {
-    category: "Tools & Collaboration",
+    category: "Development Tools & Practices",
     skills: [
-      { name: "Git & GitHub", description: "Version control, PR workflows" },
-      { name: "VS Code", description: "IDE customization, debugging" },
+      { name: "Testing", description: "Unit testing, integration testing, and test-driven development." },
+      { name: "API Design", description: "RESTful principles, documentation, and integration patterns." },
+      { name: "Performance Optimization", description: "Code profiling, caching strategies, and scalability improvements." },
     ],
   },
   {
-    category: "Soft Skills",
+    category: "Research & Analytics",
     skills: [
-      { name: "Problem-Solving" },
-      { name: "Collaboration & Teamwork" },
-      { name: "Agile Development" },
+      { name: "Statistical Analysis", description: "Hypothesis testing, regression analysis, and experimental design." },
+      { name: "Scientific Writing", description: "Research documentation, technical reports, and peer review." },
+      { name: "Presentation Skills", description: "Technical communication, data storytelling, and academic presentations." },
     ],
   },
 ];
