@@ -20,7 +20,7 @@ const projects = [
     challenges: "Built robust PDF parsing pipeline using FastAPI microservices architecture. Integrated Hugging Face transformer models for semantic text analysis and summarization. Implemented vector database for intelligent document search and retrieval. Optimized inference speed to process documents 3x faster than baseline.",
     tech: ["React", "FastAPI", "Python", "Hugging Face", "Supabase", "Vector DB"],
     image: process.env.PUBLIC_URL + "/images/papermind.png",
-    demoLink: "https://papermind-ai-frontend-pnbb.onrender.com",
+    demoLink: "https://papermind-ai-frontend-production.up.railway.app/",
     repoLink: "https://github.com/ethiyor/papermind-ai",
   },
   {
