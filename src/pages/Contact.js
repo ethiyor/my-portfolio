@@ -2,6 +2,7 @@ import React from "react";
 
 const contactInfo = {
   email: "ytk2108@columbia.edu",
+  phone: "(332) 265-6980",
   linkedIn: "https://www.linkedin.com/in/yordanos-kassa-624302295/",
   github: "https://github.com/ethiyor",
 };
@@ -53,7 +54,24 @@ export default function Contact() {
               border: '1px solid #d0e8ff',
               transition: 'all 0.3s'
             }}>
-              Email: {contactInfo.email}
+              📧 Email: {contactInfo.email}
+            </a>
+          </li>
+          <li style={{ marginBottom: '16px', textAlign: 'center' }}>
+            <a href={`tel:${contactInfo.phone}`} style={{ 
+              color: '#0070f3', 
+              fontWeight: 600, 
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '12px 20px',
+              background: 'rgba(255,255,255,0.9)',
+              borderRadius: '8px',
+              border: '1px solid #d0e8ff',
+              transition: 'all 0.3s'
+            }}>
+              📱 Phone: {contactInfo.phone}
             </a>
           </li>
           <li style={{ marginBottom: '16px', textAlign: 'center' }}>
@@ -70,7 +88,7 @@ export default function Contact() {
               border: '1px solid #d0e8ff',
               transition: 'all 0.3s'
             }}>
-              LinkedIn Profile
+              💼 LinkedIn Profile
             </a>
           </li>
           <li style={{ textAlign: 'center' }}>
@@ -87,7 +105,7 @@ export default function Contact() {
               border: '1px solid #d0e8ff',
               transition: 'all 0.3s'
             }}>
-              GitHub Profile
+              💻 GitHub Profile
             </a>
           </li>
         </ul>
@@ -101,9 +119,9 @@ export default function Contact() {
           border: '1px solid rgba(0,112,243,0.2)'
         }}>
           <p style={{ margin: 0, fontSize: '0.9rem', color: '#0070f3', fontWeight: 600 }}>
-            Based in New York City<br/>
-            Columbia University Student<br/>
-            Available for Summer 2025 opportunities
+            📍 Based in New York City<br/>
+            🎓 Columbia University Student<br/>
+            🚀 Available for Summer 2026 opportunities
           </p>
         </div>
       </div>

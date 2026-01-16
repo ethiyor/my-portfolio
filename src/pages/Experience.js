@@ -2,27 +2,40 @@ import React from "react";
 
 const experiences = [
   {
-    role: "Undergraduate Researcher",
-    organization: "Columbia University",
-    dates: "May 2024 – July 2025",
+    role: "Undergraduate Student Researcher",
+    organization: "Physics Department, Columbia University",
+    dates: "June 2024 – Present",
     description: [
-      "Conducted astrophysics research analyzing multi-messenger signals from gravitational waves and neutrinos, contributing to cutting-edge scientific understanding.",
-      "Developed and optimized Python tools for large-scale data processing and statistical analysis, improving efficiency and accuracy of data workflows.",
-      "Collaborated with a multidisciplinary team of researchers to co-author papers and prepare findings for conferences.",
-      "Utilized libraries such as NumPy, SciPy, and Matplotlib for data modeling and visualization.",
-      "Presented research updates and findings to faculty and peer groups, enhancing communication and scientific presentation skills."
+      "Investigated the role of time windows in multimessenger searches for gravitational waves and high-energy neutrinos.",
+      "Analyzed neutrino injection data and computed odds ratio metrics using the LLAMA Python framework.",
+      "Identified the effects of shorter time windows on joint searches, offering key recommendations for the next LIGO/Virgo collaboration.",
+      "Presented findings at the 2024 Columbia Annual Science Research Symposium.",
+      "Research paper in preparation: Coincident Searches for Gravitational Waves and High-Energy Neutrinos (2024)."
     ],
     paperLink: "https://drive.google.com/file/d/1xfg6keeL-ITgJ_U7Ds6WgFDUQW2Zgx5o/view?usp=sharing"
   },
   {
-    role: "Software Engineering Student",
-    organization: "CodePath.org",
-    dates: "June 2025 - Aug 2025",
+    role: "AI Research Engineer (Intern)",
+    organization: "Hidden Information Labs",
+    dates: "Oct 2025 – Present",
+    location: "Remote",
     description: [
-      "Completed CodePath's Intro to Web Development course, gaining practical experience with React, JavaScript, HTML, CSS, and backend integration using Express and Supabase.",
-      "Built and deployed full-stack projects, including user authentication, file uploads, and responsive UI design, following agile development practices.",
-      "Collaborated with peers through code reviews and team projects, enhancing communication and version control skills using Git and GitHub.",
-      "Applied industry best practices for frontend-backend integration, API design, and cloud storage."
+      "Building a Rust-based Lean search agent that matches mathematical theorems using symbol patterns and contextual similarity.",
+      "Created CLI commands to extract and structure 5,000+ mathlib lemmas into searchable datasets.",
+      "Designed a smart ranking system that prioritizes the most relevant results by analyzing symbol frequency and keyword matching.",
+      "Implemented context-aware extraction to capture surrounding code, improving the system's understanding of theorem usage."
+    ]
+  },
+  {
+    role: "Web Development Fellow",
+    organization: "CodePath",
+    dates: "July 2025",
+    location: "Remote",
+    description: [
+      "Completed a competitive web dev fellowship focused on HTML, CSS, and JavaScript.",
+      "Built and deployed full-stack projects with real-world applications.",
+      "Collaborated with peers through code reviews and team projects.",
+      "Applied industry best practices for frontend development and responsive design."
     ]
   }
 ];
@@ -62,6 +75,7 @@ export default function Experience() {
             }}>
               <span style={{ fontWeight: 600 }}>
                 {exp.organization} | {exp.dates}
+                {exp.location && ` | ${exp.location}`}
               </span>
               {exp.paperLink && (
                 <a

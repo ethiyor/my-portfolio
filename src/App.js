@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
 import Experience from "./pages/Experience.js";
+import Leadership from "./pages/Leadership.js";
 import Contact from "./pages/Contact";
 import "./App.css";
 
@@ -23,6 +24,9 @@ export default function App() {
           </Link>
           <Link className="nav-link" to="/experience" style={{ position: 'relative' }}>
             Experience
+          </Link>
+          <Link className="nav-link" to="/leadership" style={{ position: 'relative' }}>
+            Leadership
           </Link>
           <Link className="nav-link" to="/skills" style={{ position: 'relative' }}>
             Skills
@@ -56,6 +60,7 @@ export default function App() {
         <Route path="/skills" element={<Skills />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/experience" element={<Experience />} />
+        <Route path="/leadership" element={<Leadership />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>

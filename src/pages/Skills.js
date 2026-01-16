@@ -4,55 +4,55 @@ const skillGroups = [
   {
     category: "Programming Languages",
     skills: [
+      { name: "Python", description: "Advanced data structures, algorithms, scientific computing, and machine learning applications." },
       { name: "JavaScript (ES6+)", description: "Modern web development with async/await, DOM manipulation, and advanced language features." },
       { name: "Java", description: "Object-oriented programming, data structures, algorithms, and enterprise applications." },
-      { name: "SQL", description: "Database design, complex queries, joins, and performance optimization." },
+      { name: "Rust", description: "Systems programming, CLI development, and high-performance applications." },
       { name: "HTML5 & CSS3", description: "Semantic markup, modern styling, animations, and responsive design principles." },
+      { name: "SQL", description: "Database design, complex queries, joins, and performance optimization." },
+      { name: "Bash", description: "Shell scripting, automation, and system administration tasks." },
     ],
   },
   {
-    category: "Frontend Development",
+    category: "Frameworks & Libraries",
     skills: [
-      { name: "React.js", description: "Component-driven architecture, hooks, context API, state management, and modern React patterns." },
-      { name: "Responsive Design", description: "Mobile-first approach, CSS Grid, Flexbox, and cross-browser compatibility." },
-      { name: "UI/UX Design", description: "User-centered design principles, accessibility (WCAG), and modern design systems." },
-      { name: "Version Control", description: "Git workflows, branching strategies, code reviews, and collaborative development." },
-    ],
-  },
-  {
-    category: "Backend & Cloud",
-    skills: [
-      { name: "Node.js & Express", description: "RESTful APIs, middleware, authentication, and scalable server architecture." },
+      { name: "React", description: "Component-driven architecture, hooks, context API, state management, and modern React patterns." },
+      { name: "Express.js", description: "RESTful API development, middleware, and backend server architecture." },
+      { name: "Node.js", description: "Server-side JavaScript, asynchronous programming, and scalable applications." },
       { name: "FastAPI", description: "High-performance Python APIs with automatic documentation and async support." },
-      { name: "Supabase", description: "Real-time databases, authentication, storage, and serverless functions." },
+      { name: "Expo & React Native", description: "Cross-platform mobile app development and deployment." },
+      { name: "Hugging Face", description: "Pre-trained models, fine-tuning, and deployment of NLP solutions." },
+    ],
+  },
+  {
+    category: "Databases & Cloud",
+    skills: [
       { name: "PostgreSQL", description: "Advanced SQL, database design, indexing, and query optimization." },
-      { name: "Cloud Deployment", description: "Heroku, Render, Vercel, and modern DevOps practices." },
+      { name: "Supabase", description: "Real-time databases, authentication, storage, and serverless functions." },
+      { name: "Railway", description: "Application deployment and cloud infrastructure management." },
+      { name: "Render", description: "Hosting web applications with continuous deployment capabilities." },
+      { name: "Docker", description: "Containerization, microservices architecture, and deployment workflows." },
+    ],
+  },
+  {
+    category: "Development Tools & Practices",
+    skills: [
+      { name: "Git & GitHub", description: "Version control, branching strategies, code reviews, and collaborative development." },
+      { name: "GitHub CI/CD", description: "Automated testing, continuous integration, and deployment pipelines." },
+      { name: "Linux", description: "System administration, command-line proficiency, and development environments." },
+      { name: "REST APIs", description: "API design, documentation, integration patterns, and best practices." },
+      { name: "CLI Development", description: "Building command-line tools and developer utilities." },
+      { name: "UI/UX Optimization", description: "User-centered design principles, accessibility (WCAG), and modern design systems." },
     ],
   },
   {
     category: "AI & Data Science",
     skills: [
       { name: "Machine Learning", description: "Supervised/unsupervised learning, model evaluation, and feature engineering." },
-      { name: "Natural Language Processing", description: "Text processing, sentiment analysis, and transformer models." },
-      { name: "Hugging Face", description: "Pre-trained models, fine-tuning, and deployment of NLP solutions." },
+      { name: "Natural Language Processing", description: "Text processing, sentiment analysis, and transformer models (BART, T5, Pegasus, LED, DistilBART)." },
+      { name: "Vector Embeddings", description: "Semantic search, document similarity, and embedding-based retrieval systems." },
       { name: "Data Visualization", description: "Interactive charts, statistical plots, and dashboard creation." },
       { name: "Scientific Computing", description: "Statistical analysis, numerical methods, and research data processing." },
-    ],
-  },
-  {
-    category: "Development Tools & Practices",
-    skills: [
-      { name: "Testing", description: "Unit testing, integration testing, and test-driven development." },
-      { name: "API Design", description: "RESTful principles, documentation, and integration patterns." },
-      { name: "Performance Optimization", description: "Code profiling, caching strategies, and scalability improvements." },
-    ],
-  },
-  {
-    category: "Research & Analytics",
-    skills: [
-      { name: "Statistical Analysis", description: "Hypothesis testing, regression analysis, and experimental design." },
-      { name: "Scientific Writing", description: "Research documentation, technical reports, and peer review." },
-      { name: "Presentation Skills", description: "Technical communication, data storytelling, and academic presentations." },
     ],
   },
 ];
