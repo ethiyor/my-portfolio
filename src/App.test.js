@@ -1,8 +1,18 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("renders the portfolio introduction and selected work", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("heading", {
+      name: /I build systems that make AI prove its work/i,
+    }),
+  ).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: "PatchProof" })).toBeInTheDocument();
+  const profileLinks = screen
+    .getAllByRole("link")
+    .filter((link) => link.getAttribute("href") === "https://github.com/ethiyor");
+
+  expect(profileLinks).not.toHaveLength(0);
 });
