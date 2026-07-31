@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import App from "./App";
 
 test("renders the portfolio introduction and selected work", () => {
-  render(<App />);
+  const { container } = render(<App />);
 
   expect(
     screen.getByRole("heading", {
@@ -19,4 +19,8 @@ test("renders the portfolio introduction and selected work", () => {
     .filter((link) => link.getAttribute("href") === "https://github.com/ethiyor");
 
   expect(profileLinks).not.toHaveLength(0);
+  expect(container.querySelectorAll(".project-diagram")).toHaveLength(3);
+  expect(container.querySelector(".system-map")).toBeInTheDocument();
+  expect(container.querySelector(".astro-bridge")).toBeInTheDocument();
+  expect(container.querySelector(".page-progress")).toBeInTheDocument();
 });

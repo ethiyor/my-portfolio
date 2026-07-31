@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   FaArrowRight,
   FaBars,
@@ -46,7 +46,6 @@ const projects = [
     ],
     stack: ["React", "Express.js", "PostgreSQL", "Supabase"],
     accent: "blue",
-    image: `${process.env.PUBLIC_URL}/images/repofy.png`,
     href: "https://github.com/ethiyor/Repofy",
     cta: "View repository",
   },
@@ -63,7 +62,6 @@ const projects = [
     ],
     stack: ["Python", "FastAPI", "Hugging Face", "Embeddings"],
     accent: "violet",
-    image: `${process.env.PUBLIC_URL}/images/papermind.png`,
     href: "https://papermind-ai-frontend.vercel.app",
     repo: "https://github.com/ethiyor/papermind-ai",
     cta: "Open live project",
@@ -181,8 +179,57 @@ const graphLinks = [
 ];
 
 function ProofNetwork() {
+  const mapRef = useRef(null);
+
+  const handlePointerMove = (event) => {
+    const map = mapRef.current;
+    if (
+      !map ||
+      !window.matchMedia("(hover: hover) and (pointer: fine)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const bounds = map.getBoundingClientRect();
+    const relativeX = (event.clientX - bounds.left) / bounds.width;
+    const relativeY = (event.clientY - bounds.top) / bounds.height;
+    const centeredX = relativeX - 0.5;
+    const centeredY = relativeY - 0.5;
+
+    map.style.setProperty("--pointer-x", `${relativeX * 100}%`);
+    map.style.setProperty("--pointer-y", `${relativeY * 100}%`);
+    map.style.setProperty("--tilt-x", `${centeredX * 5}deg`);
+    map.style.setProperty("--tilt-y", `${centeredY * -4}deg`);
+
+    map.querySelectorAll(".map-node").forEach((node) => {
+      const nodeBounds = node.getBoundingClientRect();
+      const nodeX = nodeBounds.left + nodeBounds.width / 2;
+      const nodeY = nodeBounds.top + nodeBounds.height / 2;
+      const distance = Math.hypot(event.clientX - nodeX, event.clientY - nodeY);
+      node.classList.toggle("is-near", distance < 105);
+    });
+  };
+
+  const resetPointerEffect = () => {
+    const map = mapRef.current;
+    if (!map) return;
+
+    map.style.setProperty("--pointer-x", "50%");
+    map.style.setProperty("--pointer-y", "45%");
+    map.style.setProperty("--tilt-x", "0deg");
+    map.style.setProperty("--tilt-y", "0deg");
+    map.querySelectorAll(".map-node").forEach((node) => node.classList.remove("is-near"));
+  };
+
   return (
-    <div className="system-map" aria-hidden="true">
+    <div
+      className="system-map"
+      aria-hidden="true"
+      ref={mapRef}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetPointerEffect}
+    >
       <div className="system-map__topbar">
         <span><i /> Live proof trace</span>
         <span>RUN_026</span>
@@ -257,8 +304,128 @@ function ProofNetwork() {
   );
 }
 
+function ProjectVisual({ projectName }) {
+  if (projectName === "PatchProof") {
+    return (
+      <div className="project-diagram project-diagram--patchproof" aria-hidden="true">
+        <div className="diagram-window__bar">
+          <span /><span /><span />
+          <strong>verification_run_364</strong>
+        </div>
+        <div className="patchproof-flow">
+          <div className="patchproof-task">
+            <span>01 / requirement</span>
+            <strong>Task specification</strong>
+            <i />
+          </div>
+          <div className="patchproof-diff">
+            <span>02 / evidence</span>
+            <p className="diff-line diff-line--removed">- unverified response</p>
+            <p className="diff-line diff-line--added">+ tested implementation</p>
+            <p className="diff-line">  364 checks passed</p>
+          </div>
+          <div className="patchproof-verdict">
+            <span>03 / verdict</span>
+            <strong><i>✓</i> Requirement satisfied</strong>
+          </div>
+          <span className="flow-packet flow-packet--one" />
+          <span className="flow-packet flow-packet--two" />
+        </div>
+      </div>
+    );
+  }
+
+  if (projectName === "Repofy") {
+    return (
+      <div className="project-diagram project-diagram--repofy" aria-hidden="true">
+        <div className="diagram-window__bar">
+          <span /><span /><span />
+          <strong>repository / collaboration</strong>
+        </div>
+        <div className="repo-network">
+          <div className="repo-branch repo-branch--main">
+            <span className="repo-node repo-node--active" />
+            <span className="repo-node" />
+            <span className="repo-node" />
+            <span className="repo-node repo-node--merge" />
+          </div>
+          <div className="repo-branch repo-branch--feature">
+            <span className="repo-node" />
+            <span className="repo-node" />
+          </div>
+          <div className="repo-panel repo-panel--files">
+            <span>main / src</span>
+            <i /><i /><i /><i />
+          </div>
+          <div className="repo-panel repo-panel--team">
+            <span>collaborators</span>
+            <b>YK</b><b>01</b><b>02</b>
+          </div>
+          <div className="repo-deploy">
+            <i />
+            <span>CI passed</span>
+            <strong>Render</strong>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="project-diagram project-diagram--papermind" aria-hidden="true">
+      <div className="diagram-window__bar">
+        <span /><span /><span />
+        <strong>semantic_retrieval.pipeline</strong>
+      </div>
+      <div className="paper-pipeline">
+        <div className="paper-stack">
+          <span className="paper-sheet paper-sheet--back" />
+          <span className="paper-sheet paper-sheet--middle" />
+          <span className="paper-sheet paper-sheet--front">
+            <i /><i /><i /><i />
+          </span>
+          <small>PDF</small>
+        </div>
+        <div className="chunk-stream">
+          <span /><span /><span /><span /><span />
+        </div>
+        <div className="embedding-core">
+          <span /><span /><span /><span /><span /><span />
+          <i />
+        </div>
+        <div className="answer-card">
+          <span>semantic match</span>
+          <strong>0.94</strong>
+          <i /><i /><i />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AstroBridge() {
+  return (
+    <section className="astro-bridge" aria-label="Research through-line">
+      <div className="astro-bridge__copy" data-reveal>
+        <span>Research coordinate / 40.8075° N</span>
+        <p>From cosmic signals to verifiable systems.</p>
+      </div>
+      <div className="orbital-system" aria-hidden="true">
+        <span className="orbit orbit--outer"><i /></span>
+        <span className="orbit orbit--middle"><i /></span>
+        <span className="orbit orbit--inner"><i /></span>
+        <span className="orbit-core" />
+        <span className="signal-wave signal-wave--one" />
+        <span className="signal-wave signal-wave--two" />
+        <span className="signal-wave signal-wave--three" />
+      </div>
+    </section>
+  );
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [introVisible, setIntroVisible] = useState(true);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -286,8 +453,122 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    let hasSeenIntro = false;
+
+    try {
+      hasSeenIntro = window.sessionStorage.getItem("portfolio-intro-seen") === "true";
+    } catch {
+      hasSeenIntro = false;
+    }
+
+    if (reducedMotion || hasSeenIntro) {
+      setIntroVisible(false);
+      return undefined;
+    }
+
+    const timer = window.setTimeout(() => {
+      setIntroVisible(false);
+      try {
+        window.sessionStorage.setItem("portfolio-intro-seen", "true");
+      } catch {
+        // The intro still works when browser storage is unavailable.
+      }
+    }, 1900);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const progressBar = document.querySelector(".page-progress__bar");
+    const cursor = document.querySelector(".ambient-cursor");
+    const finePointer = window.matchMedia?.("(hover: hover) and (pointer: fine)").matches;
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+    const updateProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+      progressBar?.style.setProperty("--page-progress", String(Math.min(1, progress)));
+    };
+
+    const updateCursor = (event) => {
+      if (!cursor) return;
+      cursor.style.setProperty("--cursor-x", `${event.clientX}px`);
+      cursor.style.setProperty("--cursor-y", `${event.clientY}px`);
+      cursor.classList.add("is-visible");
+    };
+
+    const updateCursorState = (event) => {
+      cursor?.classList.toggle(
+        "is-interactive",
+        Boolean(event.target.closest("a, button, .project-card, .system-map")),
+      );
+    };
+
+    const magneticItems = finePointer && !reducedMotion
+      ? [...document.querySelectorAll("[data-magnetic]")]
+      : [];
+    const magneticCleanups = magneticItems.map((item) => {
+      const move = (event) => {
+        const bounds = item.getBoundingClientRect();
+        item.style.setProperty(
+          "--magnetic-x",
+          `${(event.clientX - bounds.left - bounds.width / 2) * 0.12}px`,
+        );
+        item.style.setProperty(
+          "--magnetic-y",
+          `${(event.clientY - bounds.top - bounds.height / 2) * 0.15}px`,
+        );
+      };
+      const leave = () => {
+        item.style.setProperty("--magnetic-x", "0px");
+        item.style.setProperty("--magnetic-y", "0px");
+      };
+      item.addEventListener("pointermove", move);
+      item.addEventListener("pointerleave", leave);
+      return () => {
+        item.removeEventListener("pointermove", move);
+        item.removeEventListener("pointerleave", leave);
+      };
+    });
+
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    if (finePointer && !reducedMotion) {
+      window.addEventListener("pointermove", updateCursor, { passive: true });
+      window.addEventListener("pointerover", updateCursorState, { passive: true });
+    }
+
+    return () => {
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("pointermove", updateCursor);
+      window.removeEventListener("pointerover", updateCursorState);
+      magneticCleanups.forEach((cleanup) => cleanup());
+    };
+  }, []);
+
   return (
     <div className="site-shell">
+      {introVisible && (
+        <div className="site-intro" aria-hidden="true">
+          <div className="site-intro__brand">YK</div>
+          <div className="site-intro__sequence">
+            <span>01 index</span>
+            <span>02 retrieve</span>
+            <span>03 verify</span>
+          </div>
+          <div className="site-intro__status">
+            <i />
+            <strong>Portfolio verified</strong>
+          </div>
+        </div>
+      )}
+      <div className="page-progress" aria-hidden="true">
+        <span className="page-progress__bar" />
+      </div>
+      <span className="ambient-cursor" aria-hidden="true" />
+
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
@@ -317,7 +598,7 @@ function App() {
           <a href="#work" onClick={closeMenu}>Work</a>
           <a href="#experience" onClick={closeMenu}>Experience</a>
           <a href="#about" onClick={closeMenu}>About</a>
-          <a className="nav-contact" href="#contact" onClick={closeMenu}>
+          <a className="nav-contact" href="#contact" onClick={closeMenu} data-magnetic>
             Let&apos;s talk
             <FaArrowRight aria-hidden="true" />
           </a>
@@ -342,13 +623,14 @@ function App() {
               retrieval, and formal verification.
             </p>
             <div className="hero__actions">
-              <a className="button button--primary" href="#work">
+              <a className="button button--primary" href="#work" data-magnetic>
                 See selected work
                 <FaArrowRight aria-hidden="true" />
               </a>
               <a
                 className="button button--secondary"
                 href="https://github.com/ethiyor"
+                data-magnetic
                 {...externalLinkProps}
               >
                 <FaGithub aria-hidden="true" />
@@ -420,26 +702,7 @@ function App() {
                 data-reveal
               >
                 <div className="project-card__visual">
-                  {project.image ? (
-                    <img src={project.image} alt={`${project.name} interface`} />
-                  ) : (
-                    <div className="verification-visual" aria-hidden="true">
-                      <div className="verification-visual__header">
-                        <span />
-                        <span />
-                        <span />
-                      </div>
-                      <div className="verification-visual__body">
-                        <p><i>01</i> requirement_trace</p>
-                        <p><i>02</i> diff_evidence</p>
-                        <p><i>03</i> risk_score</p>
-                        <div className="verification-visual__result">
-                          <span>✓</span>
-                          verified against task
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  <ProjectVisual projectName={project.name} />
                 </div>
 
                 <div className="project-card__content">
@@ -461,7 +724,11 @@ function App() {
                     ))}
                   </div>
                   <div className="project-card__links">
-                    <a href={project.href} {...(project.href.startsWith("http") ? externalLinkProps : {})}>
+                    <a
+                      href={project.href}
+                      data-magnetic
+                      {...(project.href.startsWith("http") ? externalLinkProps : {})}
+                    >
                       {project.cta}
                       {project.href.startsWith("http") ? (
                         <FaExternalLinkAlt aria-hidden="true" />
@@ -470,7 +737,12 @@ function App() {
                       )}
                     </a>
                     {project.repo && (
-                      <a href={project.repo} {...externalLinkProps} aria-label={`${project.name} GitHub repository`}>
+                      <a
+                        href={project.repo}
+                        {...externalLinkProps}
+                        data-magnetic
+                        aria-label={`${project.name} GitHub repository`}
+                      >
                         <FaGithub aria-hidden="true" />
                         Code
                       </a>
@@ -514,6 +786,8 @@ function App() {
           </div>
         </section>
 
+        <AstroBridge />
+
         <section className="section section--about" id="about">
           <SectionHeading
             eyebrow="About"
@@ -533,7 +807,7 @@ function App() {
                 questions into systems that can be tested, inspected, and
                 improved.
               </p>
-              <a href="mailto:ytk2108@columbia.edu">
+              <a href="mailto:ytk2108@columbia.edu" data-magnetic>
                 Start a conversation
                 <FaArrowRight aria-hidden="true" />
               </a>
@@ -628,7 +902,7 @@ function App() {
             I&apos;m always glad to talk about software engineering, reliable
             AI, formal methods, research, or ambitious products.
           </p>
-          <a className="contact-email" href="mailto:ytk2108@columbia.edu">
+          <a className="contact-email" href="mailto:ytk2108@columbia.edu" data-magnetic>
             <FaEnvelope aria-hidden="true" />
             ytk2108@columbia.edu
             <FaArrowRight aria-hidden="true" />
@@ -662,7 +936,7 @@ function App() {
             Email
           </a>
         </div>
-        <a className="back-to-top" href="#top" aria-label="Back to top">
+        <a className="back-to-top" href="#top" aria-label="Back to top" data-magnetic>
           <FaCodeBranch aria-hidden="true" />
           Back to top
         </a>
