@@ -6,7 +6,7 @@ test("renders the portfolio introduction and selected work", () => {
 
   expect(
     screen.getByRole("heading", {
-      name: /I build systems that make AI prove its work/i,
+      name: /Yordanos Kassa/i,
     }),
   ).toBeInTheDocument();
   expect(screen.getByRole("heading", { name: "PatchProof" })).toBeInTheDocument();

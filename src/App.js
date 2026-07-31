@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaArrowRight,
   FaBars,
@@ -143,7 +143,7 @@ const skillGroups = [
 
 function SectionHeading({ eyebrow, title, copy }) {
   return (
-    <div className="section-heading">
+    <div className="section-heading" data-reveal>
       <p className="eyebrow">{eyebrow}</p>
       <div className="section-heading__row">
         <h2>{title}</h2>
@@ -153,10 +153,138 @@ function SectionHeading({ eyebrow, title, copy }) {
   );
 }
 
+const graphNodes = [
+  { x: "8%", y: "53%", delay: "0s" },
+  { x: "25%", y: "39%", delay: "0.25s" },
+  { x: "42%", y: "45%", delay: "0.5s" },
+  { x: "58%", y: "31%", delay: "0.75s" },
+  { x: "74%", y: "36%", delay: "1s" },
+  { x: "87%", y: "20%", delay: "1.25s", verified: true },
+  { x: "24%", y: "18%", delay: "0.4s", secondary: true },
+  { x: "41%", y: "24%", delay: "0.7s", secondary: true },
+  { x: "57%", y: "13%", delay: "0.9s", secondary: true },
+  { x: "72%", y: "15%", delay: "1.1s", secondary: true },
+  { x: "89%", y: "43%", delay: "1.4s", secondary: true },
+];
+
+const graphLinks = [
+  { x: "9%", y: "52%", width: "20%", angle: "-33deg", delay: "0s", active: true },
+  { x: "26%", y: "39%", width: "19%", angle: "18deg", delay: "0.2s" },
+  { x: "43%", y: "44%", width: "20%", angle: "-32deg", delay: "0.4s", active: true },
+  { x: "59%", y: "31%", width: "18%", angle: "13deg", delay: "0.6s" },
+  { x: "75%", y: "35%", width: "18%", angle: "-47deg", delay: "0.8s", active: true },
+  { x: "25%", y: "19%", width: "18%", angle: "17deg", delay: "0.3s" },
+  { x: "42%", y: "23%", width: "18%", angle: "-27deg", delay: "0.5s" },
+  { x: "58%", y: "14%", width: "17%", angle: "7deg", delay: "0.7s" },
+  { x: "73%", y: "16%", width: "16%", angle: "12deg", delay: "0.9s" },
+  { x: "75%", y: "37%", width: "17%", angle: "24deg", delay: "1.1s" },
+];
+
+function ProofNetwork() {
+  return (
+    <div className="system-map" aria-hidden="true">
+      <div className="system-map__topbar">
+        <span><i /> Live proof trace</span>
+        <span>RUN_026</span>
+      </div>
+
+      <div className="system-map__canvas">
+        <span className="system-map__axis system-map__axis--x" />
+        <span className="system-map__axis system-map__axis--y" />
+
+        {graphLinks.map((link, index) => (
+          <span
+            className={`map-link ${link.active ? "map-link--active" : ""}`}
+            key={`link-${index}`}
+            style={{
+              "--x": link.x,
+              "--y": link.y,
+              "--width": link.width,
+              "--angle": link.angle,
+              "--delay": link.delay,
+            }}
+          />
+        ))}
+
+        {graphNodes.map((node, index) => (
+          <span
+            className={`map-node ${node.secondary ? "map-node--secondary" : ""} ${
+              node.verified ? "map-node--verified" : ""
+            }`}
+            key={`node-${index}`}
+            style={{ "--x": node.x, "--y": node.y, "--delay": node.delay }}
+          >
+            {node.verified && "✓"}
+          </span>
+        ))}
+
+        <div className="code-module">
+          <span>review_pipeline.py</span>
+          <i style={{ "--line": "78%" }} />
+          <i style={{ "--line": "54%" }} />
+          <i style={{ "--line": "88%" }} />
+          <i style={{ "--line": "42%" }} />
+          <i style={{ "--line": "66%" }} />
+        </div>
+
+        <div className="retrieval-module">
+          <div className="retrieval-module__orbit">
+            <span />
+            <span />
+            <span />
+            <span />
+            <i />
+          </div>
+          <p><strong>5,000+</strong> indexed lemmas</p>
+        </div>
+
+        <div className="output-module">
+          <span><i /> requirement</span>
+          <span><i /> evidence</span>
+          <span><i /> verdict</span>
+        </div>
+      </div>
+
+      <div className="system-map__profile">
+        <img
+          src={`${process.env.PUBLIC_URL}/images/yorr.jpeg`}
+          alt=""
+        />
+        <p><strong>Yordanos Kassa</strong><span>New York · Columbia &apos;27</span></p>
+        <i />
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => {
+    const revealItems = document.querySelectorAll("[data-reveal]");
+
+    if (!("IntersectionObserver" in window)) {
+      revealItems.forEach((item) => item.classList.add("is-visible"));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="site-shell">
@@ -197,15 +325,17 @@ function App() {
       </header>
 
       <main id="main-content">
-        <section className="hero" id="top">
+        <section className="hero hero--technical" id="top">
           <div className="hero__copy">
-            <p className="eyebrow hero__eyebrow">
-              Engineer · Researcher · Columbia &apos;27
-            </p>
+            <p className="hero__system-label">Portfolio / 2026</p>
             <h1>
-              I build systems that make AI
-              <span> prove its work.</span>
+              <span>Yordanos</span>
+              <span>Kassa</span>
             </h1>
+            <p className="hero__role">Engineer <i>·</i> Researcher</p>
+            <p className="hero__statement">
+              I build systems that make AI <em>prove its work.</em>
+            </p>
             <p className="hero__lede">
               I&apos;m Yordanos Kassa, a computer science–mathematics and
               astrophysics student working across backend engineering, AI
@@ -225,51 +355,49 @@ function App() {
                 GitHub
               </a>
             </div>
+            <div className="hero__domains" aria-label="Areas of focus">
+              <span>Backend systems</span>
+              <span>Formal methods</span>
+              <span>AI retrieval</span>
+            </div>
             <div className="hero__availability">
               <span className="status-dot" aria-hidden="true" />
-              Based in New York City · Graduating May 2027
+              Available for new-grad roles · May 2027
             </div>
           </div>
 
           <div className="hero__visual">
-            <div className="portrait-frame">
-              <div className="portrait-frame__topline">
-                <span>01 / PROFILE</span>
-                <span>NEW YORK, NY</span>
-              </div>
-              <img
-                src={`${process.env.PUBLIC_URL}/images/yorr.jpeg`}
-                alt="Yordanos Kassa in New York City"
-              />
-              <div className="portrait-frame__caption">
-                <span>CS–Math</span>
-                <span>Astrophysics</span>
-                <span>Reliable AI</span>
-              </div>
-            </div>
-            <div className="proof-note" aria-label="Engineering focus">
-              <span className="proof-note__index">→</span>
-              <p>
-                <strong>Build.</strong> Measure. Verify.
-              </p>
-            </div>
+            <ProofNetwork />
           </div>
         </section>
 
+        <div className="tech-marquee" aria-hidden="true">
+          <div className="tech-marquee__track">
+            <span>Backend systems</span><i>◆</i>
+            <span>Formal verification</span><i>◆</i>
+            <span>AI retrieval</span><i>◆</i>
+            <span>Research engineering</span><i>◆</i>
+            <span>Backend systems</span><i>◆</i>
+            <span>Formal verification</span><i>◆</i>
+            <span>AI retrieval</span><i>◆</i>
+            <span>Research engineering</span><i>◆</i>
+          </div>
+        </div>
+
         <section className="signal-strip" aria-label="Selected impact">
-          <article>
+          <article data-reveal>
             <strong>3,200</strong>
             <span>catalog products processed</span>
           </article>
-          <article>
+          <article data-reveal>
             <strong>5,000+</strong>
             <span>Lean lemmas indexed</span>
           </article>
-          <article>
+          <article data-reveal>
             <strong>364</strong>
             <span>PatchProof tests</span>
           </article>
-          <article>
+          <article data-reveal>
             <strong>2,502</strong>
             <span>Titan image embeddings</span>
           </article>
@@ -289,6 +417,7 @@ function App() {
                   index === 0 ? "project-card--featured" : ""
                 }`}
                 key={project.name}
+                data-reveal
               >
                 <div className="project-card__visual">
                   {project.image ? (
@@ -362,7 +491,7 @@ function App() {
 
           <div className="experience-list">
             {experience.map((item, index) => (
-              <article className="experience-item" key={`${item.role}-${item.organization}`}>
+              <article className="experience-item" key={`${item.role}-${item.organization}`} data-reveal>
                 <div className="experience-item__index">
                   {String(index + 1).padStart(2, "0")}
                 </div>
@@ -392,7 +521,7 @@ function App() {
           />
 
           <div className="about-grid">
-            <article className="about-statement">
+            <article className="about-statement" data-reveal>
               <p className="about-statement__lead">
                 I&apos;m drawn to problems where a result is only as useful as
                 the evidence behind it.
@@ -410,7 +539,7 @@ function App() {
               </a>
             </article>
 
-            <article className="education-card">
+            <article className="education-card" data-reveal>
               <p className="card-kicker">Education</p>
               <h3>Columbia University</h3>
               <p>B.A. in Computer Science–Mathematics and Astrophysics</p>
@@ -428,7 +557,7 @@ function App() {
               </div>
             </article>
 
-            <article className="honors-card">
+            <article className="honors-card" data-reveal>
               <p className="card-kicker">Selected honors</p>
               <a
                 href="https://urf.columbia.edu/urf/research/srf/scholars"
@@ -452,7 +581,7 @@ function App() {
               </a>
             </article>
 
-            <article className="leadership-card">
+            <article className="leadership-card" data-reveal>
               <p className="card-kicker">Leadership</p>
               <h3>Founder & Lead Developer, EthioCare.org</h3>
               <p>
@@ -483,7 +612,7 @@ function App() {
           />
           <div className="skills-grid">
             {skillGroups.map((group, index) => (
-              <article key={group.title}>
+              <article key={group.title} data-reveal>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <h3>{group.title}</h3>
                 <p>{group.items.join(" · ")}</p>
