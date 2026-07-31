@@ -10,6 +10,10 @@ test("renders the portfolio introduction and selected work", () => {
     }),
   ).toBeInTheDocument();
   expect(screen.getByRole("heading", { name: "PatchProof" })).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: /Let's talk/i })).toHaveAttribute(
+    "href",
+    "#contact",
+  );
   const profileLinks = screen
     .getAllByRole("link")
     .filter((link) => link.getAttribute("href") === "https://github.com/ethiyor");

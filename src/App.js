@@ -189,7 +189,7 @@ function App() {
           <a href="#work" onClick={closeMenu}>Work</a>
           <a href="#experience" onClick={closeMenu}>Experience</a>
           <a href="#about" onClick={closeMenu}>About</a>
-          <a className="nav-contact" href="mailto:ytk2108@columbia.edu" onClick={closeMenu}>
+          <a className="nav-contact" href="#contact" onClick={closeMenu}>
             Let&apos;s talk
             <FaArrowRight aria-hidden="true" />
           </a>
@@ -492,7 +492,7 @@ function App() {
           </div>
         </section>
 
-        <section className="contact-section">
+        <section className="contact-section" id="contact">
           <p className="eyebrow">Contact</p>
           <h2>Let&apos;s build something that needs to be correct.</h2>
           <p>
