@@ -22,29 +22,41 @@ const projects = [
     label: "Founder & Full-Stack Engineer",
     period: "2026 — Present",
     description:
-      "An AI code-verification platform that checks pull requests against the task they were meant to solve—not just the code they changed.",
-    outcomes: [
-      "CLI and VS Code workflows for reviewing local Git diffs",
-      "GitHub App automation with webhook auth and PR comments",
-      "AWS ECS/RDS deployment with 364-test coverage",
+      "A specification-aware review platform that evaluates whether pull requests satisfy their original task, then explains merge readiness with traceable evidence.",
+    metrics: [
+      { value: "5-stage", label: "review pipeline" },
+      { value: "4", label: "product surfaces" },
+      { value: "364", label: "passing tests" },
     ],
-    stack: ["Python", "FastAPI", "TypeScript", "PostgreSQL", "AWS"],
+    outcomes: [
+      "Built a five-stage LLM pipeline for requirement alignment, diff evidence, risk detection, and merge-readiness reasoning",
+      "Delivered one review engine through a CLI, React dashboard, GitHub App automation, and packaged VS Code extension",
+      "Deployed with ECR, ECS Fargate, ALB, and RDS PostgreSQL; secured signed webhooks and GitHub installation-token authentication",
+      "Developed 364 tests covering diff parsing, scoring, APIs, webhooks, authentication, and automated PR-comment flows",
+    ],
+    stack: ["Python", "FastAPI", "React", "TypeScript", "PostgreSQL", "GitHub Apps", "AWS"],
     accent: "lime",
     href: "mailto:ytk2108@columbia.edu?subject=PatchProof",
     cta: "Ask about PatchProof",
   },
   {
     name: "Repofy",
-    label: "Full-Stack Developer",
-    period: "2025 — 2026",
+    label: "Founder & Full-Stack Engineer",
+    period: "2025 — Present",
     description:
-      "A GitHub-style collaboration platform with authentication, repository workflows, file versioning, and tag-based discovery.",
-    outcomes: [
-      "19 REST endpoints across core product workflows",
-      "React and Express application backed by PostgreSQL",
-      "Automated GitHub Actions-to-Render delivery pipeline",
+      "A focused, repository-bound collaboration platform connecting browser workflows, terminal-based version control, remote Git operations, and PatchProof review intelligence.",
+    metrics: [
+      { value: "97", label: "API endpoints" },
+      { value: "41", label: "database tables" },
+      { value: "35+", label: "CLI commands" },
     ],
-    stack: ["React", "Express.js", "PostgreSQL", "Supabase"],
+    outcomes: [
+      "Engineered 97 Express endpoints and a 41-table PostgreSQL architecture across 20 migrations",
+      "Published @repofyapp/cli with 35+ commands and Git-compatible clone, fetch, pull, push, branch, and merge workflows",
+      "Added protected branches, scoped permissions, audit logs, notifications, persistent repository storage, and automated backups",
+      "Integrated PatchProof into pull requests and hardened folder imports with generated-file filtering and byte-safe API batching",
+    ],
+    stack: ["React", "Express.js", "PostgreSQL", "Supabase", "Git Smart HTTP", "Node.js"],
     accent: "blue",
     href: "https://github.com/ethiyor/Repofy",
     cta: "View repository",
@@ -403,6 +415,40 @@ function ProjectVisual({ projectName }) {
   );
 }
 
+function ProductEcosystem() {
+  return (
+    <aside className="product-ecosystem" data-reveal aria-labelledby="ecosystem-title">
+      <div className="product-ecosystem__intro">
+        <span>Integrated developer infrastructure</span>
+        <h3 id="ecosystem-title">One workflow, from repository to evidence-based review.</h3>
+      </div>
+      <div className="ecosystem-flow">
+        <div className="ecosystem-node ecosystem-node--repofy">
+          <span>01 / Repository layer</span>
+          <strong>Repofy</strong>
+          <p>Git hosting · branches · collaboration</p>
+        </div>
+        <div className="ecosystem-connector" aria-hidden="true">
+          <span /><i />
+        </div>
+        <div className="ecosystem-node ecosystem-node--patchproof">
+          <span>02 / Intelligence layer</span>
+          <strong>PatchProof</strong>
+          <p>Task → evidence → verdict</p>
+        </div>
+        <div className="ecosystem-connector" aria-hidden="true">
+          <span /><i />
+        </div>
+        <div className="ecosystem-node ecosystem-node--delivery">
+          <span>03 / Delivery surfaces</span>
+          <strong>Where developers work</strong>
+          <p>Repofy · GitHub · VS Code · CLI</p>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
 function AstroBridge() {
   return (
     <section className="astro-bridge" aria-label="Research through-line">
@@ -692,6 +738,8 @@ function App() {
             copy="I gravitate toward systems where correctness, traceability, and real-world usefulness all matter."
           />
 
+          <ProductEcosystem />
+
           <div className="projects-grid">
             {projects.map((project, index) => (
               <article
@@ -713,6 +761,16 @@ function App() {
                   <p className="project-card__label">{project.label}</p>
                   <h3>{project.name}</h3>
                   <p className="project-card__description">{project.description}</p>
+                  {project.metrics && (
+                    <div className="project-metrics" aria-label={`${project.name} engineering scale`}>
+                      {project.metrics.map((metric) => (
+                        <div key={metric.label}>
+                          <strong>{metric.value}</strong>
+                          <span>{metric.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   <ul>
                     {project.outcomes.map((outcome) => (
                       <li key={outcome}>{outcome}</li>

@@ -23,4 +23,8 @@ test("renders the portfolio introduction and selected work", () => {
   expect(container.querySelector(".system-map")).toBeInTheDocument();
   expect(container.querySelector(".astro-bridge")).toBeInTheDocument();
   expect(container.querySelector(".page-progress")).toBeInTheDocument();
+  expect(container.querySelector(".product-ecosystem")).toBeInTheDocument();
+  expect(screen.getByText("97")).toBeInTheDocument();
+  expect(screen.getByText("41")).toBeInTheDocument();
+  expect(screen.getByText("35+")).toBeInTheDocument();
 });
