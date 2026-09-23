@@ -24,8 +24,8 @@ const projects = [
     description:
       "A specification-aware review platform that evaluates whether pull requests satisfy their original task, then explains merge readiness with traceable evidence.",
     metrics: [
-      { value: "5-stage", label: "review pipeline" },
-      { value: "4", label: "product surfaces" },
+      { value: "25", label: "developers" },
+      { value: "50+", label: "pull requests" },
       { value: "364", label: "passing tests" },
     ],
     outcomes: [
@@ -34,6 +34,13 @@ const projects = [
       "Deployed with ECR, ECS Fargate, ALB, and RDS PostgreSQL; secured signed webhooks and GitHub installation-token authentication",
       "Developed 364 tests covering diff parsing, scoring, APIs, webhooks, authentication, and automated PR-comment flows",
     ],
+    caseStudy: {
+      question: "Can an AI code reviewer prove that a change solves the task it was asked to solve?",
+      architecture: ["Task specification", "Git diff", "Five-stage LLM review", "Evidence graph", "Risk-scored verdict"],
+      evidence: ["25 users", "50+ pull requests", "364 automated tests", "CLI · GitHub · VS Code · Repofy"],
+      decision:
+        "Designed the review as an auditable pipeline instead of a single opaque model call, preserving requirements, findings, changed files, and verdict evidence in PostgreSQL.",
+    },
     stack: ["Python", "FastAPI", "React", "TypeScript", "PostgreSQL", "GitHub Apps", "AWS"],
     accent: "lime",
     href: "mailto:ytk2108@columbia.edu?subject=PatchProof",
@@ -48,14 +55,21 @@ const projects = [
     metrics: [
       { value: "97", label: "API endpoints" },
       { value: "41", label: "database tables" },
-      { value: "35+", label: "CLI commands" },
+      { value: "46", label: "CLI commands" },
     ],
     outcomes: [
       "Engineered 97 Express endpoints and a 41-table PostgreSQL architecture across 20 migrations",
-      "Published @repofyapp/cli with 35+ commands and Git-compatible clone, fetch, pull, push, branch, and merge workflows",
+      "Published @repofyapp/cli with 46 documented commands and Git-compatible clone, fetch, pull, push, branch, and merge workflows",
       "Added protected branches, scoped permissions, audit logs, notifications, persistent repository storage, and automated backups",
-      "Integrated PatchProof into pull requests and hardened folder imports with generated-file filtering and byte-safe API batching",
+      "Integrated PatchProof into pull requests and added integrity checks, restorable bundle backups, and 76 passing tests",
     ],
+    caseStudy: {
+      question: "What does a focused Git collaboration platform need to be genuinely useful from terminal to pull request?",
+      architecture: ["Git Smart HTTP", "Express services", "41-table PostgreSQL", "Persistent Git storage", "React workspace"],
+      evidence: ["97 handlers", "20 migrations", "46 CLI commands", "76 passing tests"],
+      decision:
+        "Kept native Git semantics while layering branch protection, row-level authorization, auditability, subscriptions, backups, and PatchProof analysis around the repository workflow.",
+    },
     stack: ["React", "Express.js", "PostgreSQL", "Supabase", "Git Smart HTTP", "Node.js"],
     accent: "blue",
     href: "https://github.com/ethiyor/Repofy",
@@ -64,15 +78,27 @@ const projects = [
   {
     name: "PaperMind AI",
     label: "Backend & AI Developer",
-    period: "2025",
+    period: "2025 — 2026",
     description:
       "A research-paper assistant that turns uploaded PDFs into a searchable semantic index with retrieval and automatic summarization.",
     outcomes: [
-      "PDF parsing and chunking pipeline",
-      "Embedding-based semantic search",
-      "FastAPI service deployed through Railway",
+      "Sentence-aware PDF parsing and chunking",
+      "BGE semantic search with ONNX FastEmbed inference",
+      "Reduced ML dependencies from 2.8 GB to 100 MB—approximately 96%",
     ],
-    stack: ["Python", "FastAPI", "Hugging Face", "Embeddings"],
+    metrics: [
+      { value: "96%", label: "smaller ML stack" },
+      { value: "BGE", label: "semantic retrieval" },
+      { value: "ONNX", label: "local inference" },
+    ],
+    caseStudy: {
+      question: "How can semantic PDF search remain useful on constrained deployment infrastructure?",
+      architecture: ["PDF upload", "Sentence-aware chunks", "BGE embeddings", "Vector ranking", "Grounded summary"],
+      evidence: ["2.8 GB → 100 MB", "ONNX inference", "FastAPI service", "Railway deployment"],
+      decision:
+        "Replaced heavyweight runtime dependencies with ONNX-based FastEmbed while preserving semantic retrieval quality and the full parsing-to-answer pipeline.",
+    },
+    stack: ["Python", "FastAPI", "BGE", "ONNX", "FastEmbed", "Supabase"],
     accent: "violet",
     href: "https://papermind-ai-frontend.vercel.app",
     repo: "https://github.com/ethiyor/papermind-ai",
@@ -89,9 +115,9 @@ const experience = [
     description:
       "Building reliable catalog and visual-search infrastructure for a computational interior-design startup.",
     details: [
-      "Built ETL and QA pipelines for 3,200 products and 7,962 thumbnails, cutting onboarding time by roughly 85%.",
+      "Built ETL and QA pipelines for 4,070 products and 13,497 images, cutting onboarding time by roughly 85% with 100% deduplication and approximately 99% metadata completeness.",
       "Selected one representative image for 2,502 products and generated 1,024-dimensional Amazon Titan embeddings.",
-      "Implemented NumPy Euclidean-distance retrieval with Pillow normalization, resumable processing, validation, and 25 tests.",
+      "Implemented vectorized NumPy retrieval with Pillow normalization, resumable processing, validation, and 25 tests.",
     ],
   },
   {
@@ -114,8 +140,8 @@ const experience = [
     description:
       "Worked on retrieval for formal mathematics, where a useful answer must also be mechanically valid.",
     details: [
-      "Engineered a Rust-based Lean 4 theorem-search agent with multi-signal ranking over 5,000+ mathlib lemmas.",
-      "Benchmarked symbol-frequency, TF-IDF, and embedding-based retrieval to study precision–recall tradeoffs.",
+      "Engineered a Rust-based Lean 4 theorem-retrieval system indexing 16,894 category-theory declarations across 852 mathlib files.",
+      "Built full-file and ±30-line contextual extraction with a hybrid reranker combining 15-rule notation canonicalization, IDF-weighted symbol overlap, name boosts, and typeclass penalties.",
     ],
   },
   {
@@ -126,7 +152,7 @@ const experience = [
     description:
       "Studied multimessenger searches connecting gravitational-wave events with high-energy neutrino signals.",
     details: [
-      "Analyzed neutrino-injection data and odds-ratio metrics with Python and LLAMA.",
+      "Analyzed 100,000+ neutrino datasets, event simulations, coincidence windows, and odds-ratio metrics with Python and LLAMA.",
       "Presented findings at the 2024 Columbia Science Research Symposium.",
     ],
   },
@@ -143,13 +169,49 @@ const skillGroups = [
   },
   {
     title: "Data & Infrastructure",
-    items: ["PostgreSQL", "SQLAlchemy", "Alembic", "Docker", "AWS ECS", "RDS", "GitHub Actions"],
+    items: ["PostgreSQL", "SQLAlchemy", "Alembic", "Docker", "AWS ECS/Fargate", "ECR", "RDS", "ALB", "Supabase"],
   },
   {
-    title: "AI & Retrieval",
-    items: ["OpenAI API", "RAG", "Vector Embeddings", "Amazon Titan", "NumPy", "Pillow", "boto3"],
+    title: "AI & Formal Systems",
+    items: ["Lean 4", "OpenAI API", "RAG", "BGE", "ONNX", "FastEmbed", "Amazon Titan", "Vector Retrieval", "LLM Evaluation"],
   },
 ];
+
+const evidenceLenses = {
+  systems: {
+    label: "Systems",
+    title: "Infrastructure with consequences.",
+    copy: "Products designed around durable state, permission boundaries, recoverability, and evidence—not just interfaces.",
+    cards: [
+      { metric: "97", label: "Repofy handlers", note: "Repository, Git, collaboration, billing, and authorization workflows." },
+      { metric: "41", label: "database tables", note: "A production schema evolved across 20 migrations." },
+      { metric: "364", label: "PatchProof tests", note: "Coverage across parsing, scoring, APIs, webhooks, auth, and PR comments." },
+      { metric: "46", label: "published CLI commands", note: "Local-to-remote version control through @repofyapp/cli." },
+    ],
+  },
+  research: {
+    label: "Research",
+    title: "Retrieval that respects formal context.",
+    copy: "Work across theorem search and rationale faithfulness, where relevance is only useful when it remains mechanically grounded.",
+    cards: [
+      { metric: "16,894", label: "Lean declarations", note: "Category-theory declarations indexed from 852 mathlib files." },
+      { metric: "±30", label: "lines of context", note: "Contextual extraction around theorem declarations." },
+      { metric: "15", label: "normalization rules", note: "Notation canonicalization inside a hybrid Rust reranker." },
+      { metric: "1 of 3", label: "ValuesLab fellows", note: "Researching faithfulness of AI-generated Lean proof explanations." },
+    ],
+  },
+  science: {
+    label: "Applied science",
+    title: "Large data, measurable outcomes.",
+    copy: "Scientific and applied ML pipelines built to survive imperfect data, constrained infrastructure, and reproducibility requirements.",
+    cards: [
+      { metric: "13,497", label: "catalog images", note: "Processed across a 4,070-product furniture catalog." },
+      { metric: "85%", label: "faster onboarding", note: "With 100% deduplication and approximately 99% metadata completeness." },
+      { metric: "100k+", label: "neutrino datasets", note: "Analyzed for multimessenger coincidence-window research." },
+      { metric: "96%", label: "dependency reduction", note: "PaperMind ML footprint reduced from 2.8 GB to 100 MB." },
+    ],
+  },
+};
 
 function SectionHeading({ eyebrow, title, copy }) {
   return (
@@ -294,7 +356,7 @@ function ProofNetwork() {
             <span />
             <i />
           </div>
-          <p><strong>5,000+</strong> indexed lemmas</p>
+          <p><strong>16,894</strong> Lean declarations</p>
         </div>
 
         <div className="output-module">
@@ -449,6 +511,115 @@ function ProductEcosystem() {
   );
 }
 
+function EvidenceLab({ activeLens, onChange }) {
+  const lens = evidenceLenses[activeLens];
+
+  return (
+    <section className="evidence-lab" id="evidence" aria-labelledby="evidence-title">
+      <div className="evidence-lab__header" data-reveal>
+        <div>
+          <p className="eyebrow">Evidence ledger</p>
+          <h2 id="evidence-title">The numbers behind the narrative.</h2>
+        </div>
+        <div className="evidence-lab__tabs" role="tablist" aria-label="Evidence category">
+          {Object.entries(evidenceLenses).map(([key, item]) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeLens === key}
+              className={activeLens === key ? "is-active" : ""}
+              key={key}
+              onClick={() => onChange(key)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="evidence-lab__body" role="tabpanel" key={activeLens}>
+        <div className="evidence-lab__narrative">
+          <span>0{Object.keys(evidenceLenses).indexOf(activeLens) + 1} / 03</span>
+          <h3>{lens.title}</h3>
+          <p>{lens.copy}</p>
+        </div>
+        <div className="evidence-grid">
+          {lens.cards.map((card, index) => (
+            <article key={card.label} style={{ "--evidence-delay": `${index * 70}ms` }}>
+              <strong>{card.metric}</strong>
+              <span>{card.label}</span>
+              <p>{card.note}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CaseStudyDialog({ project, onClose }) {
+  useEffect(() => {
+    if (!project) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") onClose();
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [project, onClose]);
+
+  if (!project) return null;
+
+  return (
+    <div className="case-study-backdrop" role="presentation" onMouseDown={onClose}>
+      <section
+        className="case-study-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="case-study-title"
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <div className="case-study-dialog__bar">
+          <span>Case study / {project.name}</span>
+          <button type="button" onClick={onClose} aria-label="Close case study" autoFocus>
+            <FaTimes aria-hidden="true" />
+          </button>
+        </div>
+        <div className="case-study-dialog__content">
+          <p className="case-study-dialog__index">System inquiry</p>
+          <h2 id="case-study-title">{project.caseStudy.question}</h2>
+
+          <div className="case-study-architecture" aria-label={`${project.name} architecture`}>
+            {project.caseStudy.architecture.map((step, index) => (
+              <React.Fragment key={step}>
+                <span>{step}</span>
+                {index < project.caseStudy.architecture.length - 1 && <i aria-hidden="true">→</i>}
+              </React.Fragment>
+            ))}
+          </div>
+
+          <div className="case-study-dialog__details">
+            <div>
+              <span>Engineering decision</span>
+              <p>{project.caseStudy.decision}</p>
+            </div>
+            <div>
+              <span>Evidence</span>
+              <ul>
+                {project.caseStudy.evidence.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
 function AstroBridge() {
   return (
     <section className="astro-bridge" aria-label="Research through-line">
@@ -472,6 +643,8 @@ function AstroBridge() {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [introVisible, setIntroVisible] = useState(true);
+  const [activeLens, setActiveLens] = useState("systems");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -642,6 +815,7 @@ function App() {
           aria-label="Primary navigation"
         >
           <a href="#work" onClick={closeMenu}>Work</a>
+          <a href="#evidence" onClick={closeMenu}>Evidence</a>
           <a href="#experience" onClick={closeMenu}>Experience</a>
           <a href="#about" onClick={closeMenu}>About</a>
           <a className="nav-contact" href="#contact" onClick={closeMenu} data-magnetic>
@@ -714,20 +888,20 @@ function App() {
 
         <section className="signal-strip" aria-label="Selected impact">
           <article data-reveal>
-            <strong>3,200</strong>
+            <strong>4,070</strong>
             <span>catalog products processed</span>
           </article>
           <article data-reveal>
-            <strong>5,000+</strong>
-            <span>Lean lemmas indexed</span>
+            <strong>16,894</strong>
+            <span>Lean declarations indexed</span>
           </article>
           <article data-reveal>
             <strong>364</strong>
             <span>PatchProof tests</span>
           </article>
           <article data-reveal>
-            <strong>2,502</strong>
-            <span>Titan image embeddings</span>
+            <strong>100k+</strong>
+            <span>neutrino datasets analyzed</span>
           </article>
         </section>
 
@@ -782,6 +956,14 @@ function App() {
                     ))}
                   </div>
                   <div className="project-card__links">
+                    <button
+                      type="button"
+                      className="project-card__case-study"
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      Explore case study
+                      <FaArrowRight aria-hidden="true" />
+                    </button>
                     <a
                       href={project.href}
                       data-magnetic
@@ -811,6 +993,8 @@ function App() {
             ))}
           </div>
         </section>
+
+        <EvidenceLab activeLens={activeLens} onChange={setActiveLens} />
 
         <section className="section section--experience" id="experience">
           <SectionHeading
@@ -967,6 +1151,8 @@ function App() {
           </a>
         </section>
       </main>
+
+      <CaseStudyDialog project={selectedProject} onClose={() => setSelectedProject(null)} />
 
       <footer className="site-footer">
         <div>

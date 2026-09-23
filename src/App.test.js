@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 
 test("renders the portfolio introduction and selected work", () => {
@@ -24,7 +24,15 @@ test("renders the portfolio introduction and selected work", () => {
   expect(container.querySelector(".astro-bridge")).toBeInTheDocument();
   expect(container.querySelector(".page-progress")).toBeInTheDocument();
   expect(container.querySelector(".product-ecosystem")).toBeInTheDocument();
-  expect(screen.getByText("97")).toBeInTheDocument();
-  expect(screen.getByText("41")).toBeInTheDocument();
-  expect(screen.getByText("35+")).toBeInTheDocument();
+  expect(screen.getAllByText("97").length).toBeGreaterThan(0);
+  expect(screen.getAllByText("41").length).toBeGreaterThan(0);
+  expect(screen.getAllByText("46").length).toBeGreaterThan(0);
+  expect(screen.getByRole("heading", { name: /numbers behind the narrative/i })).toBeInTheDocument();
+
+  fireEvent.click(screen.getByRole("tab", { name: "Research" }));
+  expect(screen.getAllByText("16,894").length).toBeGreaterThan(0);
+
+  fireEvent.click(screen.getAllByRole("button", { name: /explore case study/i })[0]);
+  expect(screen.getByRole("dialog")).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: /prove that a change solves the task/i })).toBeInTheDocument();
 });
