@@ -72,8 +72,9 @@ const projects = [
     },
     stack: ["React", "Express.js", "PostgreSQL", "Supabase", "Git Smart HTTP", "Node.js"],
     accent: "blue",
-    href: "https://github.com/ethiyor/Repofy",
-    cta: "View repository",
+    href: "https://www.repofy.dev",
+    repo: "https://github.com/ethiyor/Repofy",
+    cta: "Open Repofy",
   },
   {
     name: "PaperMind AI",
@@ -367,11 +368,17 @@ function ProofNetwork() {
       </div>
 
       <div className="system-map__profile">
-        <img
-          src={`${process.env.PUBLIC_URL}/images/yorr.jpeg`}
-          alt=""
-        />
-        <p><strong>Yordanos Kassa</strong><span>New York · Columbia &apos;27</span></p>
+        <div className="system-map__portrait">
+          <img
+            src={`${process.env.PUBLIC_URL}/images/yorr.jpeg`}
+            alt="Yordanos Kassa"
+          />
+        </div>
+        <p>
+          <small>01 / Profile</small>
+          <strong>Yordanos Kassa</strong>
+          <span>New York · Columbia &apos;27</span>
+        </p>
         <i />
       </div>
     </div>

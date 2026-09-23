@@ -24,6 +24,11 @@ test("renders the portfolio introduction and selected work", () => {
   expect(container.querySelector(".astro-bridge")).toBeInTheDocument();
   expect(container.querySelector(".page-progress")).toBeInTheDocument();
   expect(container.querySelector(".product-ecosystem")).toBeInTheDocument();
+  expect(screen.getByAltText("Yordanos Kassa")).toBeInTheDocument();
+  expect(screen.getByRole("link", { name: /open repofy/i })).toHaveAttribute(
+    "href",
+    "https://www.repofy.dev",
+  );
   expect(screen.getAllByText("97").length).toBeGreaterThan(0);
   expect(screen.getAllByText("41").length).toBeGreaterThan(0);
   expect(screen.getAllByText("46").length).toBeGreaterThan(0);
